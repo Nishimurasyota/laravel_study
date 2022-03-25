@@ -15,6 +15,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 
 function tag($tag, $txt)
@@ -23,26 +24,48 @@ function tag($tag, $txt)
 }
 class HelloController extends Controller
 {
+
+    public function index(Request $request, Response $response)
+    {
+        $html = <<<EOF
+
+        <html>
+            <head>
+                <title>Edit</title>
+            </head>
+            <body>
+                <h1>Hello</h1>
+                <h3>Response</h3>
+                <pre>{$response}</pre>
+                <h3>Request</h3>
+                <pre>{$request}</pre>
+            </body>
+        </html>
+        EOF;
+
+        $response->setContent($html);
+        return $response;
+    }
     /**
      * シングルアクションコントローラー
      *
      * @return void
      */
-    public function __invoke()
-    {
-        return <<<EOF
+    // public function __invoke()
+    // {
+    //     return <<<EOF
 
-    <html>
-        <head>
-            <title>Edit</title>
-        </head>
-        <body>
-            <h1>Single Action</h1>
-            <p>シングルアクションのページです</p>
-        </body>
-    </html>
-    EOF;
-    }
+    // <html>
+    //     <head>
+    //         <title>Edit</title>
+    //     </head>
+    //     <body>
+    //         <h1>Single Action</h1>
+    //         <p>シングルアクションのページです</p>
+    //     </body>
+    // </html>
+    // EOF;
+    // }
 
     //
 
