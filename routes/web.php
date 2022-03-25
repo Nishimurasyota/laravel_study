@@ -13,6 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+$html = <<<EOF
+<html>
+    <head>
+    <title>Hello</title>
+    <style>
+    h1{font-size:100px;}
+    </style>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <div>
+            <p>this is sample page</p>
+        </div>
+    </body>
+</html>
+EOF;
+
+Route::get('hello', function ()  use ($html) {
+    return $html;
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
