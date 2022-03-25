@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('hello/{msg?}', function ($msg = "no message") {
 
-
-$html = <<<EOF
+    $html = <<<EOF
 <html>
     <head>
     <title>Hello</title>
@@ -25,14 +25,12 @@ $html = <<<EOF
     </head>
     <body>
         <h1>Hello</h1>
-        <div>
-            <p>this is sample page</p>
-        </div>
+        <p>message：{$msg}</p>
+        <p>this is sample page</p>
     </body>
 </html>
 EOF;
 
-Route::get('hello', function ()  use ($html) {
     return $html;
 });
 
