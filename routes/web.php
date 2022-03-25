@@ -13,26 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('hello/{msg?}', function ($msg = "no message") {
-
-    $html = <<<EOF
-<html>
-    <head>
-    <title>Hello</title>
-    <style>
-    h1{font-size:100px;}
-    </style>
-    </head>
-    <body>
-        <h1>Hello</h1>
-        <p>message：{$msg}</p>
-        <p>this is sample page</p>
-    </body>
-</html>
-EOF;
-
-    return $html;
-});
+Route::get('hello', 'App\Http\Controllers\HelloController@index');
 
 Route::get('/', function () {
     return view('welcome');
