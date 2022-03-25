@@ -14,7 +14,7 @@ use App\Http\Controllers\HelloController;
 |
 */
 
-Route::get('/hello/{id?}', [HelloController::class, 'index']);
+Route::get('/hello', [HelloController::class, 'index']);
 
 
 Route::get('/', function () {
