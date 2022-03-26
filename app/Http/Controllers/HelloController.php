@@ -23,12 +23,8 @@ class HelloController extends Controller
     public function index()
     {
 
-        $data = [
-            ["name" => "taro", "mail" => "taro@mail"],
-            ["name" => "hanako", "mail" => "hanako@mail"],
-            ["name" => "jiro", "mail" => "jiro@mail"]
-        ];
-        return view("hello.index", ["data" => $data]);
+        return view("hello.index", ["message" => "Hello"]);
+
     }
 
     public function post(Request $request)
