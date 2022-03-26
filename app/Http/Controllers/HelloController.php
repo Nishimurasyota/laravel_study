@@ -20,14 +20,17 @@ use Illuminate\Http\Response;
 class HelloController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
+
         $data = [
-            "msg" => "コントローラーから渡されたメッセージです",
-            "id" => $request->id
-
+            "one", "two", "three", "four", "five", "six",
         ];
+        return view("hello.index", ["data" => $data]);
+    }
 
-        return view("hello.index", $data);
+    public function post(Request $request)
+    {
+        return view("hello.index", ["msg" => $request->msg]);
     }
 }
