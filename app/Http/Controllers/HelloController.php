@@ -24,7 +24,9 @@ class HelloController extends Controller
     {
 
         $data = [
-            "one", "two", "three", "four", "five", "six",
+            ["name" => "taro", "mail" => "taro@mail"],
+            ["name" => "hanako", "mail" => "hanako@mail"],
+            ["name" => "jiro", "mail" => "jiro@mail"]
         ];
         return view("hello.index", ["data" => $data]);
     }
