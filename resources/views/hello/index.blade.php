@@ -1,22 +1,28 @@
-<html lang="ja">
+@extends("layouts.helloapp")
 
-<head>
-    <title>Blade/Index</title>
-</head>
+@section("title", "Index")
 
-<body>
-    <h1>Blade/Index</h1>
-    <ol>
-        @php
-        $counter = 0;
-        @endphp
-        @while ($counter < count($data)) <li>{{$data[$counter]}}</li>
-            @php
-            $counter++;
-            @endphp
-            @endwhile
-    </ol>
+@section("menubar")
+    @parent
+    インデックスページ
+@endsection
 
-</body>
+@section("content")
+    <p>本文のコンテンツ</p>
+    <p>必要なだけ記述可能</p>
 
-</html>
+@component("components.message")
+    @slot("msg_title")
+        CAUTION!
+    @endslot
+
+    @slot("msg_content")
+        これはメッセージの表示です
+    @endslot
+@endcomponent
+
+@endsection
+
+@section("footer")
+    copyright 2022 syota.
+@endsection
