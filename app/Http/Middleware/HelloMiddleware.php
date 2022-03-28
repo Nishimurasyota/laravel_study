@@ -16,6 +16,12 @@ class HelloMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        $data = [
+            ["name" => "taro", "mail" => "taro@mail"],
+            ["name" => "hanako", "mail" => "hanako@mail"],
+            ["name" => "jiro", "mail" => "jiro@mail"]
+        ];
+        $request->merge(["data" => $data]);
         return $next($request);
     }
 }
