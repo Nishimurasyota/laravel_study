@@ -21,7 +21,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\HelloMiddleware::class,
     ];
 
     /**
@@ -45,6 +44,9 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        "hello" => [
+            \App\Http\Middleware\HelloMiddleware::class,
+        ]
     ];
 
     /**
