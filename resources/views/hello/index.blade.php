@@ -42,7 +42,10 @@
         @if($errors->has('age'))
         <tr>
             <th>ERROR</th>
-            <td>{{$errors->first('age')}}</td>
+            <!-- ルールが複数ある場合は$errors->get('')で全て配列として持ってきてforeachでそれぞれを出力することもできる -->
+            @foreach($errors->get('age') as $error)
+            <td>{{$error}}</td>
+            @endforeach
         </tr>
         @endif
         <tr>
