@@ -58,25 +58,28 @@ class HelloController extends Controller
         return view("hello.add");
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $param = [
             "name" => $request->name,
             "mail" => $request->mail,
             "age" => $request->age,
         ];
-        DB::insert("insert into peoples (name, mail, age) values(:name, :mail, :age)",$param);
+        DB::insert("insert into peoples (name, mail, age) values(:name, :mail, :age)", $param);
         return redirect("/hello");
     }
 
-    public function edit(Request $request){
-$param= [
-    "id" => $request->id,
-];
-$item = DB::select("select * from peoples where id = :id", $param);
-return view("hello.edit", ["form" => $item[0]]);
+    public function edit(Request $request)
+    {
+        $param = [
+            "id" => $request->id,
+        ];
+        $item = DB::select("select * from peoples where id = :id", $param);
+        return view("hello.edit", ["form" => $item[0]]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $param = [
             "id" => $request->id,
             "name" => $request->name,
@@ -87,4 +90,21 @@ return view("hello.edit", ["form" => $item[0]]);
         return redirect("/hello");
     }
 
+    public function del(Request $request)
+    {
+        $param = [
+            "id" => $request->id,
+        ];
+        $item = DB::select("select * from peoples where id = :id", $param);
+        return view("hello.del", ["form" => $item[0]]);
+    }
+
+    public function remove(Request $request)
+    {
+        $param = [
+            "id" => $request->id,
+        ];
+        $item = DB::delete("delete from peoples where id = :id", $param);
+        return redirect("/hello");
+    }
 }
