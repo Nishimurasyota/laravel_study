@@ -8,29 +8,22 @@
 @endsection
 
 @section("content")
-    <table>
+
+@if($item != null)
+    @foreach($item as $i)
+    <table width="400px">
 
         <tr>
-            <th>id: </th>
-            <td><input type="text" name="name" value="{{$item->id}}"></td>
+            <th width="50px">id: </th>
+            <td width="50px"><input type="text" name="name" value="{{$i->id}}"></td>
         </tr>
         <tr>
-            <th>name: </th>
-            <td><input type="text" name="name" value="{{$item->name}}"></td>
-        </tr>
-        <tr>
-            <th>mail: </th>
-            <td><input type="text" name="mail" value="{{$item->mail}}"></td>
-        </tr>
-        <tr>
-            <th>age: </th>
-            <td><input type="text" name="age" value="{{$item->age}}"></td>
-        </tr>
-        <tr>
-            <th></th>
-            <td><input type="submit" value="send"></td>
+            <th width="50px">name: </th>
+            <td width="50px"><input type="text" name="name" value="{{$i->name}}"></td>
         </tr>
     </table>
+    @endforeach
+@endif
 @endsection
 
 @section('footer')
