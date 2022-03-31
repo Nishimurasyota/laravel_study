@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('peoples', function (Blueprint $table) {
-            $table->id()->autoIncrement()->primaryKey();
+            $table->increments("id");
             $table->timestamps();
 
             $table->string("name")->nullable(false);
