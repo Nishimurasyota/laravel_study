@@ -45,7 +45,7 @@ class PersonController extends Controller
     public function edit(Request $request)
     {
         $person = Person::find($request->id);
-        return view("person.edit",["form" => $person]);
+        return view("person.edit", ["form" => $person]);
     }
 
     public function update(Request $request)
@@ -58,4 +58,14 @@ class PersonController extends Controller
         return redirect("/person");
     }
 
+    public function delete(Request $request)
+    {
+        $person = Person::find($request->id);
+        return view("person.del", ["form" => $person]);
+    }
+
+    public function remove(Request $request){
+        $person = Person::find($request->id)->delete();
+        return redirect("/person");
+    }
 }

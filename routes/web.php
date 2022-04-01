@@ -33,6 +33,8 @@ Route::get('person/add', [PersonController::class, 'add']);
 Route::post('person/add', [PersonController::class, 'create']);
 Route::get('person/edit', [PersonController::class, 'edit']);
 Route::post('person/edit', [PersonController::class, 'update']);
+Route::get('person/del', [PersonController::class, 'delete']);
+Route::post('person/del', [PersonController::class, 'remove']);
 
 Route::get('/', function () {
     return view('welcome');
