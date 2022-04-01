@@ -12,10 +12,12 @@ BoardのIndexページ
 <table>
     <tr>
         <th>Data</th>
+        <th>Person</th>
     </tr>
     @foreach($items as $item)
     <tr>
-        <td>{{$item->getData()}}</td>
+        <td>{{$item->title}}</td>
+        <td>{{$item->person->name}}</td>
     </tr>
     @endforeach
 </table>
