@@ -11,7 +11,7 @@ class Board extends Model
 
     protected $guarded = array("id");
 
-    public static $rule = array(
+    public static $rules = array(
         "person_id" => "required",
         "title" => "required",
         "message" => "required",
