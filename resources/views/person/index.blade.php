@@ -14,7 +14,7 @@ Index
         <th>Person</th>
         <th>Board</th>
     </tr>
-    @foreach($items as $item)
+    @foreach($hasItems as $item)
     <tr>
         <td>{{$item->getData()}}</td>
         <td>
@@ -31,6 +31,18 @@ Index
     </tr>
     @endforeach
 </table>
+<div style="margin-top:10px;">
+    <table>
+        <tr>
+            <th>Person</th>
+        </tr>
+        @foreach($noItems as $item)
+        <tr>
+            <td>{{$item->getData()}}</td>
+        </tr>
+        @endforeach
+    </table>
+</div>
 
 @endsection
 
