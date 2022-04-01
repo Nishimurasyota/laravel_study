@@ -20,20 +20,20 @@ class PeopleTableSeeder extends Seeder
             "mail" => "nagomi@mail",
             "age" => 20,
         ];
-        DB::table("peoples")->insert($param);
+        DB::table("people")->insert($param);
 
         $param = [
             "name" => "kaito",
             "mail" => "kaito@mail",
             "age" => 28,
         ];
-        DB::table("peoples")->insert($param);
+        DB::table("people")->insert($param);
 
         $param = [
             "name" => "aoi",
             "mail" => "aoi@mail",
             "age" => 32,
         ];
-        DB::table("peoples")->insert($param);
+        DB::table("people")->insert($param);
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\PersonController;
 use App\Http\Middleware\HelloMiddleware;
 
 /*
@@ -24,6 +25,8 @@ Route::get('hello/edit', [HelloController::class, 'edit']);
 Route::post('hello/edit', [HelloController::class, 'update']);
 Route::get('hello/del', [HelloController::class, 'del']);
 Route::post('hello/del', [HelloController::class, 'remove']);
+
+Route::get('/person', [PersonController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
