@@ -16,13 +16,19 @@ Index
     </tr>
     @foreach($hasItems as $item)
     <tr>
-        <td>{{$item->getData()}}</td>
+        <td>
+            <a href="{{route('person.edit',['id' => $item->id])}}">
+                {{$item->getData()}}
+            </a>
+        </td>
         <td>
             @if($item->boards != null)
             <table width="100%">
                 @foreach($item->boards as $obj)
                 <tr>
-                    <td>{{$obj->getData()}}</td>
+                    <td>
+                        {{$obj->getData()}}
+                    </td>
                 </tr>
                 @endforeach
             </table>
@@ -38,7 +44,11 @@ Index
         </tr>
         @foreach($noItems as $item)
         <tr>
-            <td>{{$item->getData()}}</td>
+            <td>
+                <a href="{{route('person.edit',['id' => $item->id])}}">
+                    {{$item->getData()}}
+                </a>
+            </td>
         </tr>
         @endforeach
     </table>
