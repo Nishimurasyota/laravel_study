@@ -44,6 +44,8 @@ Index
     </table>
 </div>
 
+<a href="{{route('person.add')}}">新規作成</a>
+
 @endsection
 
 @section('footer')
