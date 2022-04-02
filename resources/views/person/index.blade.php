@@ -20,6 +20,10 @@ Index
             <a href="{{route('person.edit',['id' => $item->id])}}">
                 {{$item->getData()}}
             </a>
+            <br>
+            <a href="{{route('person.del',['id' => $item->id])}}">
+                削除
+            </a>
         </td>
         <td>
             @if($item->boards != null)
@@ -47,6 +51,10 @@ Index
             <td>
                 <a href="{{route('person.edit',['id' => $item->id])}}">
                     {{$item->getData()}}
+                </a>
+                <br>
+                <a href="{{route('person.del',['id' => $item->id])}}">
+                    削除
                 </a>
             </td>
         </tr>
