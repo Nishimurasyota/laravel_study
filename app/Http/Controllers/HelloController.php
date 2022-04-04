@@ -19,6 +19,7 @@ use Illuminate\Http\Response;
 use App\Http\Requests\HelloRequest;
 use Validator;
 use Illuminate\Support\Facades\DB;
+use App\Models\Person;
 
 class HelloController extends Controller
 {
@@ -26,14 +27,14 @@ class HelloController extends Controller
     public function index(Request $request)
     {
 
-        $items = DB::table("peoples")->get();
+        $items = Person::simplePaginate(3);
         return view("hello.index", ["items" => $items]);
     }
 
     public function show(Request $request)
     {
         $id = $request->id;
-        $item = DB::table("peoples")->where("id", "<=", $id)->get();
+        $item = DB::table("people")->where("id", "<=", $id)->get();
         return view("hello.show", ["item" => $item]);
     }
 
@@ -67,7 +68,7 @@ class HelloController extends Controller
             "mail" => $request->mail,
             "age" => $request->age,
         ];
-        DB::insert("insert into peoples (name, mail, age) values(:name, :mail, :age)", $param);
+        DB::insert("insert into people (name, mail, age) values(:name, :mail, :age)", $param);
         return redirect("/hello");
     }
 
@@ -76,7 +77,7 @@ class HelloController extends Controller
         $param = [
             "id" => $request->id,
         ];
-        $item = DB::select("select * from peoples where id = :id", $param);
+        $item = DB::select("select * from people where id = :id", $param);
         return view("hello.edit", ["form" => $item[0]]);
     }
 
@@ -88,7 +89,7 @@ class HelloController extends Controller
             "mail" => $request->mail,
             "age" => $request->age,
         ];
-        DB::update("update peoples set name =:name, mail =:mail, age =:age where id = :id", $param);
+        DB::update("update people set name =:name, mail =:mail, age =:age where id = :id", $param);
         return redirect("/hello");
     }
 
@@ -97,7 +98,7 @@ class HelloController extends Controller
         $param = [
             "id" => $request->id,
         ];
-        $item = DB::select("select * from peoples where id = :id", $param);
+        $item = DB::select("select * from people where id = :id", $param);
         return view("hello.del", ["form" => $item[0]]);
     }
 
@@ -106,7 +107,7 @@ class HelloController extends Controller
         $param = [
             "id" => $request->id,
         ];
-        $item = DB::delete("delete from peoples where id = :id", $param);
+        $item = DB::delete("delete from people where id = :id", $param);
         return redirect("/hello");
     }
 
