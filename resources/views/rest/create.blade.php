@@ -7,11 +7,11 @@
         </tr>
         <tr>
             <th>url: </th>
-            <td><input type="text" name="message" value='{{old("url")}}'></td>
+            <td><input type="text" name="url" value='{{old("url")}}'></td>
         </tr>
         <tr>
             <th></th>
-            <td><input type="submmit" value="send"></td>
+            <td><input type="submit" value="send"></td>
         </tr>
     </table>
 </form>

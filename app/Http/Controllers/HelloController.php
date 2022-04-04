@@ -33,7 +33,7 @@ class HelloController extends Controller
     public function show(Request $request)
     {
         $id = $request->id;
-        $item = DB::table("peoples")->where("id", "<=",$id)->get();
+        $item = DB::table("peoples")->where("id", "<=", $id)->get();
         return view("hello.show", ["item" => $item]);
     }
 
@@ -108,5 +108,10 @@ class HelloController extends Controller
         ];
         $item = DB::delete("delete from peoples where id = :id", $param);
         return redirect("/hello");
+    }
+
+    public function rest(Request $request)
+    {
+        return view("hello.rest");
     }
 }
