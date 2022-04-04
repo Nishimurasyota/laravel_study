@@ -16,19 +16,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\Person;
 use App\Http\Requests\HelloRequest;
 use Validator;
 use Illuminate\Support\Facades\DB;
-use App\Models\Person;
 
 class HelloController extends Controller
 {
 
     public function index(Request $request)
     {
-
-        $items = Person::simplePaginate(3);
-        return view("hello.index", ["items" => $items]);
+        $sort = $request->sort;
+        $items = Person::orderBy("name", "asc")->paginate(3);
+        $param = ["items" => $items, "sort" => $sort];
+        return view("hello.index")->with($param);
     }
 
     public function show(Request $request)

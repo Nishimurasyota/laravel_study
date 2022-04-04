@@ -1,5 +1,27 @@
 @extends("layouts.helloapp")
 
+<style>
+    .pagination {
+        text-align: center;
+    }
+
+    .pagination li {
+        display: inline-block;
+    }
+    tr th a:link{
+        color:white;
+    }
+    tr th a:visited{
+        color:white;
+    }
+    tr th a:hover{
+        color:white;
+    }
+    tr th a:active{
+        color:white;
+    }
+</style>
+
 @section("title", "Person.index")
 
 @section("menubar")
@@ -11,7 +33,7 @@ Index
 
 <table>
     <tr>
-        <th>Person</th>
+        <th><a href="/person?sort=name">Person</a></th>
         <th>Board</th>
     </tr>
     @foreach($hasItems as $item)
@@ -63,6 +85,7 @@ Index
 </div>
 
 <a href="{{route('person.add')}}">新規作成</a>
+{{$hasItems->appends(["sort" => $sort])->links()}}
 
 @endsection
 
