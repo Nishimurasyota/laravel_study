@@ -32,7 +32,7 @@ Route::get('hello/rest', [HelloController::class, 'rest']);
 Route::get('hello/session', [HelloController::class, 'ses_get']);
 Route::post('hello/session', [HelloController::class, 'ses_put']);
 
-Route::get('/person', [PersonController::class, 'index']);
+Route::get('/person', [PersonController::class, 'index'])->middleware("auth");
 Route::get('person/find', [PersonController::class, 'find']);
 Route::post('person/find', [PersonController::class, 'search']);
 Route::get('person/add', [PersonController::class, 'add'])->name("person.add");
@@ -41,6 +41,8 @@ Route::get('person/edit', [PersonController::class, 'edit'])->name("person.edit"
 Route::post('person/edit', [PersonController::class, 'update']);
 Route::get('person/del', [PersonController::class, 'delete'])->name("person.del");
 Route::post('person/del', [PersonController::class, 'remove']);
+Route::get('person/auth', [PersonController::class, 'getAuth']);
+Route::post('person/auth', [PersonController::class, 'postAuth']);
 
 Route::get('/board', [BoardController::class, 'index']);
 Route::get('board/add', [BoardController::class, 'add']);
