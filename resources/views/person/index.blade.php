@@ -8,17 +8,21 @@
     .pagination li {
         display: inline-block;
     }
-    tr th a:link{
-        color:white;
+
+    tr th a:link {
+        color: white;
     }
-    tr th a:visited{
-        color:white;
+
+    tr th a:visited {
+        color: white;
     }
-    tr th a:hover{
-        color:white;
+
+    tr th a:hover {
+        color: white;
     }
-    tr th a:active{
-        color:white;
+
+    tr th a:active {
+        color: white;
     }
 </style>
 
@@ -31,9 +35,16 @@ Index
 
 @section("content")
 
+@if(Auth::check())
+<p>
+    USER: {{$user->name . "(" .$user->email . ")"}}
+</p>
+@else
+<p>ログインしていません (<a href="/login">ログイン</a>|<a href="/register">登録</a>)</p>
+@endif
 <table>
     <tr>
-        <th><a href="/person?sort=name">Person</a></th>
+        <th><a href="/hello?sort=name">Person</a></th>
         <th>Board</th>
     </tr>
     @foreach($hasItems as $item)
@@ -85,6 +96,7 @@ Index
 </div>
 
 <a href="{{route('person.add')}}">新規作成</a>
+<br>
 {{$hasItems->appends(["sort" => $sort])->links()}}
 
 @endsection

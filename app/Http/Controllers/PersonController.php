@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use Illuminate\Support\Facades\Auth;
 
 class PersonController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
         $sort = $request->sort;
         $hasItems = Person::has("boards")->orderBy("name", "desc")->simplePaginate(3);
         $noItems = Person::doesntHave("boards")->get();
-        $param = ["hasItems" => $hasItems, "noItems" => $noItems, "sort" => $sort];
+        $param = ["hasItems" => $hasItems, "noItems" => $noItems, "sort" => $sort, "user" => $user];
         return view("person.index")->with($param);
     }
 
